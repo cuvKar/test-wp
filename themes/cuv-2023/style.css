@@ -1,0 +1,130 @@
+/*
+Theme Name: CUV 2023
+Text Domain: cuvtwentythree
+Version: 0.1
+Tested up to: 6.2
+Requires at least: 4.7
+Requires PHP: 5.2.4
+Description: This is the new CLINUVEL Pharmaceuticals theme for 2023, it is 
+designewd to take advantage of Gutenberg.
+Tags: two-column, custom-logo, custom-menu, featured-images, 
+full-width-template, theme-options, block-patterns, block-styles, wide-blocks
+Author: CUV Web Team
+Author URI: https://www.clinuvel.com
+Theme URI: https://www.clinuvel.com
+License: GNU General Public License v2 or later //NOTE// Needs updating
+License URI: http://www.gnu.org/licenses/gpl-2.0.html //NOTE// Needs updating
+
+//NOTE// Needs updating
+All files, unless otherwise stated, are released under the GNU General Public
+License version 2.0 (http://www.gnu.org/licenses/gpl-2.0.html)
+
+//NOTE// Needs updating
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned
+with others.
+*/
+
+/* ======== Global Styles ======== */
+
+body {
+  background: #fff;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* ======== End Of Global Styles ======== */
+
+/*  ======== Header Styles ========  */
+.main_nav {
+  display: block;
+  width: 100%;
+  height: 129px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.container-logo {
+  margin-top: 60px;
+  margin-bottom: 52px;
+}
+
+#mega-menu-wrap-second_menu {
+  background: #fff;
+  padding: 0;
+  margin-top: 24px;
+}
+
+#mega-menu-wrap-second_menu #mega-menu-second_menu {
+  text-align: center;
+  color: #000;
+}
+
+#mega-menu-wrap-second_menu
+  #mega-menu-second_menu
+  > li.mega-menu-item
+  > a.mega-menu-link {
+  color: #001a72;
+  padding: 0 2em;
+}
+
+#mega-menu-wrap-second_menu #mega-menu-second_menu {
+  background: #fff;
+}
+
+#mega-menu-wrap-second_menu
+  #mega-menu-second_menu
+  > li.mega-menu-item.mega-current-menu-item
+  > a.mega-menu-link,
+#mega-menu-wrap-second_menu
+  #mega-menu-second_menu
+  > li.mega-menu-item.mega-current-menu-ancestor
+  > a.mega-menu-link,
+#mega-menu-wrap-second_menu
+  #mega-menu-second_menu
+  > li.mega-menu-item.mega-current-page-ancestor
+  > a.mega-menu-link {
+  background: none;
+  color: #001a72;
+  border-bottom: 2px solid #4ab0b5;
+}
+
+#mega-menu-wrap-second_menu
+  #mega-menu-second_menu
+  > li.mega-menu-item
+  .mega-toggle-on:hover {
+  background: none;
+}
+
+#mega-menu-wrap-second_menu
+  #mega-menu-second_menu
+  > li.mega-menu-item.mega-toggle-on
+  > a.mega-menu-link {
+  background: #ffffff00;
+  color: #001a72;
+  border-bottom: 2px solid #4ab0b5;
+}
+
+#mega-menu-wrap-second_menu
+  #mega-menu-second_menu
+  > li.mega-menu-item.mega-toggle-on:hover {
+  background: none;
+}
+
+#mega-menu-wrap-second_menu
+  #mega-menu-second_menu
+  li.mega-align-bottom-left.mega-toggle-on
+  > a.mega-menu-link {
+  background: #ffffff00;
+}
+/*  ======== End Of Header Styles ========  */
+
+/* ======== Banner Styles ======== */
+
+.page_banner {
+  margin: 300px 0 166px 0;
+  min-height: 716px;
+}
+/* ======== End Of Banner Styles ======== */

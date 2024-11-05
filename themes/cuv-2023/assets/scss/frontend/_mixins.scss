@@ -1,0 +1,364 @@
+/// Clean Element
+/// ----------------
+/// @example scss - Usage
+/// - @include clean();
+/// ----------------
+@mixin clean {
+    margin: 0;
+    padding: 0;
+}
+
+
+/// Sizing Helper
+/// ----------------
+/// @param {Length} $width - Width
+/// @param {Length} $height [$width] - Height
+/// ----------------
+/// @example scss - Usage
+///   .foo {
+///     @include size(350px);
+///   }
+/// @example css - Result
+///   .foo {
+///     width: 350px;
+///     height: 350px;
+///   }
+/// ----------------
+@mixin wh-size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+
+/// Center horizontally and vertically
+/// ----------------
+/// Important:
+/// You must have a parent element
+/// with `position: relative` set.
+/// ----------------
+/// @example scss - Usage
+///   .foo {
+///       @include center-both;
+///   }
+/// @example css - Result
+///   .foo {
+///       position: absolute;
+///       top: 50%;
+///       left: 50%;
+///       -webkit-transform: translate(-50%, -50%);
+///       -ms-transform: translate(-50%, -50%);
+///       transform: translate(-50%, -50%);
+///   }
+/// ----------------
+@mixin center-both {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include prefix(transform, translate(-50%, -50%), 'webkit' 'ms');
+}
+
+
+/// Rect Helper
+/// ----------------
+/// @example scss - Usage
+/// - @include rect();
+/// ----------------
+@mixin rect {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+
+/// Background Image Helper
+/// ----------------
+/// @example scss - Usage
+/// - @include back-img();
+/// ----------------
+@mixin back-img {
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+
+/// Grayscale filter mixin
+/// ----------------
+/// @param {Length} $amount - filter percentage
+/// ----------------
+/// @example scss - Usage
+///   .foo {
+///       @include greyscale(80%);
+///   }
+/// @example css - Result
+///   .foo {
+///       filter: grayscale(80%);
+///       -webkit-filter: grayscale(80%);
+///   }
+/// ----------------
+@mixin greyscale($amount) {
+    @if unitless($amount) {
+        $amount: $amount * 1%;
+    }
+    filter: grayscale($amount);
+    -webkit-filter: grayscale($amount);
+}
+
+
+/// Given the location of a webfont, will generate a font-face declaration with multiple file formats.
+/// ----------------
+/// @param {String} $font-name - Font family name
+/// @param {String} $file-name - File name (no extension)
+/// @param {String | Number} $weight [normal] - Font weight
+/// @param {String} $style [normal] - Font style
+/// ----------------
+/// @example scss - Usage
+/// - @include font-face('gotham', '/fonts/gotham');
+/// ----------------
+@mixin font-face($font-name, $file-name, $weight: normal, $style: normal) {
+    @font-face {
+        font-family: quote($font-name);
+        src: url($file-name + '.eot');
+        src: url($file-name + '.eot?#iefix') format('embedded-opentype'),
+             url($file-name + '.woff') format('woff'),
+             url($file-name + '.ttf') format('truetype'),
+             url($file-name + '.svg##{$font-name}') format('svg');
+        font-weight: $weight;
+        font-style: $style;
+    }
+}
+
+
+/// Given a font size in pixels, reproduces that font size in rems.
+/// ----------------
+/// @param {Length} $size - Font size
+/// @param {Length} $base - HTML base font size
+/// ----------------
+/// @example scss - Usage
+///   .foo {
+///     @include font-size(16px);
+///   }
+/// @example css - Result
+///   .foo {
+///     font-size: 16px;
+///     font-size: 1rem;
+///   }
+/// ----------------
+@mixin font-size($size, $base: 16) {
+    @if unitless($size) {
+        $size: $size * 1px;
+    }
+    font-size: $size;
+    font-size: ($size / $base) * 1rem;
+}
+
+/// Placeholder
+/// ----------------
+/// @param {Color} $color - Placeholder color
+/// ----------------
+/// @example scss -
+/// - @include placeholder(#000000);
+/// ----------------
+@mixin placeholder($color: null) {
+    @if ($color != null) {
+        &::placeholder {
+            color: $color;
+            // Override Firefox's unusual default opacity;
+            // See https://github.com/twbs/bootstrap/pull/11526
+            opacity: 1;
+        }
+        &::-moz-placeholder {
+            color: $color;
+            // Override Firefox's unusual default opacity;
+            // See https://github.com/twbs/bootstrap/pull/11526
+            opacity: 1;
+        }
+        // Internet Explorer 10+
+        &:-ms-input-placeholder {
+            color: $color;
+        }
+        // Safari and Chrome
+        &::-webkit-input-placeholder {
+            color: $color;
+        }
+    } else {
+        &::placeholder               { @content; }
+        // Firefox
+        &::-moz-placeholder          { @content; }
+        // Internet Explorer 10+
+        &:-ms-input-placeholder      { @content; }
+        // Safari and Chrome
+        &::-webkit-input-placeholder { @content; }
+    }
+}
+
+
+// Hover mixin and `$enable-hover-media-query` are deprecated.
+//
+// Originally added during our alphas and maintained during betas, this mixin was
+// designed to prevent `:hover` stickiness on iOS-an issue where hover styles
+// would persist after initial touch.
+//
+// For backward compatibility, we've kept these mixins and updated them to
+// always return their regular pseudo-classes instead of a shimmed media query.
+//
+// Issue: https://github.com/twbs/bootstrap/issues/25195
+@mixin hover() {
+    &:hover { @content; }
+}
+
+@mixin hover-focus() {
+  &:hover,
+  &:focus {
+        @content;
+  }
+}
+
+@mixin plain-hover-focus() {
+    &,
+    &:hover,
+    &:focus {
+        @content;
+    }
+}
+
+@mixin hover-focus-active() {
+    &:hover,
+    &:focus,
+    &:active {
+        @content;
+    }
+}
+
+
+/// Pseudo "Before" helper
+/// ----------------
+/// @group no-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// ----------------
+@mixin before($content: '') {
+    &:before {
+        content: $content;
+        @content;
+    }
+}
+
+
+/// Pseudo "After" helper
+/// ----------------
+/// @group no-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// ----------------
+@mixin after($content: '') {
+    &:after {
+        content: $content;
+        @content;
+    }
+}
+
+
+/// WordPress active menu items helper
+/// ----------------
+/// @group no-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// ----------------
+@mixin wp-active-menu-items() {
+    &.current-menu-item,
+    &.current-menu-parent,
+    &.current-menu-ancestor,
+    &.current_page_parent {
+        @content;
+    }
+}
+
+
+/// Mixin to customize scrollbars
+/// Beware, this does not work in all browsers
+/// ----------------
+/// @param {Length} $size - Horizontal scrollbar's height and vertical scrollbar's width
+/// @param {Color}  $foreground-color - Scrollbar's color
+/// @param {Color}  $background-color [mix($foreground-color, white, 50%)] - Scrollbar's color
+/// ----------------
+/// @example scss - Scrollbar styling
+/// - @include scrollbar(.5em, slategray);
+/// ----------------
+@mixin scrollbar($size: 10px, $color: transparent) {
+
+    overflow: auto;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+        position: absolute;
+        width: $size;
+        margin-left: -#{$size};
+        -webkit-appearance: none;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: darken($color, 5%);
+        border-right: 1px solid darken($color, 5%);
+        border-left: 1px solid darken($color, 5%);
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: $color;
+        background-clip: content-box;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 1px 2px;
+    }
+    // For Internet Explorer
+    body {
+        scrollbar-face-color: $color;
+        scrollbar-track-color: darken($color, 5%);
+    }
+}
+
+
+/// Select the first exact child
+/// ----------------
+/// @group no-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// ----------------
+@mixin first-child() {
+    &:first-of-type {
+        @content
+    }
+}
+
+
+/// Select the last exact child
+/// ----------------
+/// @group no-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// ----------------
+@mixin last-child() {
+    &:last-of-type {
+        @content
+    }
+}
+
+/// Select all even children.
+/// ----------------
+/// @group no-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// ----------------
+@mixin even() {
+    &:nth-child(even) {
+        @content;
+    }
+}
+
+
+/// Select all odd children.
+/// ----------------
+/// @group no-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// ----------------
+@mixin odd() {
+    &:nth-child(odd) {
+        @content;
+    }
+}

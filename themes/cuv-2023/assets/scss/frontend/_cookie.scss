@@ -1,0 +1,106 @@
+.cookie-message {
+	display: none;
+	position: fixed;
+	z-index: 9999;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	padding: 0;
+	background-color: rgba($white,.5);
+	box-shadow: 2px 1px 3px 0 rgba(215, 215, 215, 0.5);
+	@include media-breakpoint-up(md) {
+		padding: 15px;
+		box-shadow: none;
+	}
+	.dismiss-notice {
+		position: relative;
+		color: $body-color;
+		@include media-breakpoint-down(sm) {
+			@include font-size(24px);
+		}
+		@include media-breakpoint-up(md) {
+			display: inline-block;
+			margin-left: 25px;
+		}
+	}
+	.btn-cookie {
+		min-width: 120px;
+	}
+	.cookie-inner {
+		padding: 10px;
+		margin: 0 auto;
+		max-width: 832px;
+		position: relative;
+		background-color: $white;
+		box-shadow: 0 2px 4px 0 rgba(215, 215, 215, 0.5);
+		@include media-breakpoint-up(md) {
+			height: 78px;
+			padding: 0 35px 0 95px;
+			display: flex;
+			flex-wrap: nowrap;
+			align-items: center;
+			justify-content: space-between;
+			border-radius: 2px;
+		}
+		.icon-cookie {
+			width: 35px;
+			height: 36px;
+			position: absolute;
+			top: 50%;
+			left: 35px;
+			margin-top: -18px;
+			@include media-breakpoint-down(sm) {
+				display: none;
+			}
+		}
+		.cookie-text {
+			p {
+				font-weight: 300;
+				margin-bottom: 0;
+				line-height: 1.43;
+				color: $body-color;
+				@include font-size(14px);
+				@include media-breakpoint-down(sm) {
+					margin-bottom: 10px;
+					br {
+						display: none;
+					}
+				}
+				@include media-breakpoint-up(lg) {
+					@include font-size(15px);
+				}
+				a {
+					color: $primary;
+					text-decoration: underline;
+					@include hover() {
+						text-decoration: none;
+					}
+				}
+			}
+		}
+		.cookie-buttons {
+			display: flex;
+			flex-wrap: nowrap;
+			align-items: center;
+			text-align: right;
+			justify-content: space-around;
+			@include media-breakpoint-up(md) {
+				justify-content: flex-end;
+			}
+			.icon-cookie {
+				display: none;
+				position: static;
+				@include media-breakpoint-down(sm) {
+					display: inline-block;
+					margin-top: 0;
+					width: 20px;
+					height: 20px;
+					svg {
+						color: white;
+					}
+				}
+			}
+		}
+	}
+}

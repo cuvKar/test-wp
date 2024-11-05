@@ -1,0 +1,33 @@
+// single post
+.post {
+    &-data {
+        width: 100%;
+        z-index: 1030;
+        position: absolute;
+        top: 82px;
+        @include media-breakpoint-up(md) {
+            top: 107px;
+        }
+        @include media-breakpoint-up(xxl) {
+            top: 110px;
+        }
+        @include media-breakpoint-up(xxxl) {
+            top: 120px;
+        }
+        body.menu-open & {
+            display: none;
+        }
+    }
+    &-titles {
+        padding-top: 250px;
+        @include media-breakpoint-up(md) {
+            padding-top: 415px;
+        }
+        @include media-breakpoint-up(xxl) {
+            padding-top: 361px;
+        }
+        @include media-breakpoint-up(xxxl) {
+            padding-top: 495px;
+        }
+    }
+}

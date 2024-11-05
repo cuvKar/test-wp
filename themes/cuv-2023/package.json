@@ -1,0 +1,41 @@
+{
+  "name": "cuv-2023",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CUVPHA/cuv.site.2023.git"
+  },
+  "keywords": [],
+  "author": "John Ranby",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CUVPHA/cuv.site.2023/issues"
+  },
+  "homepage": "https://github.com/CUVPHA/cuv.site.2023#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.0.1",
+    "cross-env": "^7.0",
+    "laravel-mix": "^6.0",
+    "postcss": "^8.1",
+    "sass": "^1.26.8",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.1",
+    "js-cookie": "^3.0.5",
+    "slick-carousel": "^1.8.1"
+  }
+}

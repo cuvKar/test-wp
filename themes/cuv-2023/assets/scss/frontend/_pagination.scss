@@ -1,0 +1,48 @@
+.paging {
+    margin: 30px auto 30px;
+    max-width: 200px;
+    text-align: center;
+    span {
+        position: relative;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 2.44;
+        text-align: center;
+        color: $text-muted;
+        padding: 0 5px;        
+    }
+}
+
+.pagination {
+    justify-content: center;
+    font-weight: 600;
+    .page-link {
+        border: none;
+        background: none;
+        color: $text-muted;
+        text-decoration: none;
+        &:hover {
+            background: none;
+            color: $primary;
+        }
+        &:focus {
+            box-shadow: none;
+        }
+    }
+    .page-numbers {
+        color: $text-muted;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        text-align: center;
+        text-decoration: none;
+        &.current {
+            color: $primary;
+            border-radius: 50%;
+        }
+        &:hover {
+            text-decoration: none;
+            color: $primary;
+        }
+    }
+}

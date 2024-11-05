@@ -1,0 +1,286 @@
+.header {
+    width: 100%;
+    height: 62px;
+    position: absolute;
+    z-index: $zindex-fixed;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    transition: height .2s ease;
+    @include media-breakpoint-up(md) {
+        height: 107px;
+        padding-top: 29px;
+        padding-bottom: 13px;
+    }
+    @include media-breakpoint-up(xxl) {
+        height: 169px;
+        padding-top: 28px;
+        padding-bottom: 28px;
+    }
+    @include media-breakpoint-up(xxxl) {
+        height: 232px;
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
+    body.page &,
+    body.single & {
+        //position: relative;
+    }
+    body:not(.home) & {
+        height: 82px;
+        padding-top: 20px;
+        padding-bottom: 40px;
+        @include media-breakpoint-up(md) {
+            height: 107px;
+            padding-top: 31px;
+            padding-bottom: 40px;
+        }
+        @include media-breakpoint-up(xxl) {
+            height: 112px;
+            padding-top: 28px;
+            padding-bottom: 45px;
+        }
+        @include media-breakpoint-up(xxxl) {
+            height: 120px;
+            padding-top: 25px;
+            padding-bottom: 38px;
+        }
+    }
+    .container-fluid {
+        &:after {
+            content: '';
+            top: calc(100% - 1px);
+            height: 1px;
+            opacity: 1;
+            left: 2.5rem;
+            right: 2.5rem;
+            position: absolute;
+            background-color: $black;
+            transition: background-color .3s ease, opacity .3s ease;
+            body.home &,
+            body.scrolled & {
+                opacity: 0;
+            }
+            body.scrolled &,
+            body.is-white-header & {
+                background-color: white;
+            }
+            body.menu-open & {
+                opacity: 1;
+                background-color: $black;
+            }
+            @include media-breakpoint-down(md) {
+                left: 1.25rem;
+                right: 1.25rem;
+            }
+        }
+    }
+    
+    body.admin-bar & {
+        top: 32px;
+    }
+    .telephone {
+        svg {
+            height: 20px;
+            transition: height .2s ease-in;
+            @include media-breakpoint-up(md) {
+                height: 36px;
+            }
+            .tel-path-a {
+                fill: white;
+            }
+            .tel-path-b {
+                stroke: white;
+            }
+            rect {
+                fill: white;
+            }
+            body:not(.home) & {
+                .tel-path-a {
+                    fill: $black;
+                }
+                .tel-path-b {
+                    stroke: $black;
+                }
+                rect {
+                    fill: $black;
+                }
+            }
+            body.is-white-header & {
+                .tel-path-a {
+                    fill: white;
+                }
+                .tel-path-b {
+                    stroke: white;
+                }
+                rect {
+                    fill: white;
+                }
+            }
+        }
+    }
+    .logo {
+        height: 22px;
+        transition: height .2s ease;
+        @include media-breakpoint-up(md) {
+            height: 36px;
+        }
+        @include media-breakpoint-up(xxl) {
+            height: 39px;
+        }
+        @include media-breakpoint-up(xxxl) {
+            height: 57px;
+        }
+        path {
+            fill: $black;
+        }
+        body.home & {
+            height: 22px;
+            @include media-breakpoint-up(md) {
+                height: 65px;
+            }
+            @include media-breakpoint-up(xxl) {
+                height: 113px;
+            }
+            @include media-breakpoint-up(xxxl) {
+                height: 160px;
+            }
+            path {
+                fill: white;
+            }
+        }
+        body.is-white-header & {
+            path {
+                fill: white;
+            }
+        }
+    }
+    .menu-toggle {
+        color: $black;
+        transition: color .2s ease-in;
+        body.home &,
+        body.is-white-header & {
+            color: white;
+        }
+        .opened {
+            display: none;
+            body.menu-open & {
+                display: inline-block;
+            }
+        }
+        .closed {
+            display: inline-block;
+            body.menu-open & {
+                display: none;
+            }
+        }
+    }
+
+    body.scrolled & {
+        top: 0;
+        height: 62px;
+        position: fixed;
+        z-index: $zindex-fixed;
+        background-color: white;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        @include media-breakpoint-up(md) {
+            height: 107px;
+            padding-top: 31px;
+            padding-bottom: 40px;
+        }
+        @include media-breakpoint-up(xxl) {
+            height: 112px;
+            padding-top: 28px;
+            padding-bottom: 45px;
+        }
+        @include media-breakpoint-up(xxxl) {
+            height: 143px;
+            padding-top: 26px;
+            padding-bottom: 60px;
+        }
+        .telephone {
+            svg {
+                .tel-path-a {
+                    fill: $black;
+                }
+                .tel-path-b {
+                    stroke: $black;
+                }
+                rect {
+                    fill: $black;
+                }
+            }
+        }
+        .logo {
+            height: 22px;
+            @include media-breakpoint-up(md) {
+                height: 36px;
+            }
+            @include media-breakpoint-up(xxl) {
+                height: 39px;
+            }
+            @include media-breakpoint-up(xxxl) {
+                height: 57px;
+            }
+            path {
+                fill: $black;
+            }
+        }
+        .menu-toggle {
+            color: $black;
+        }
+    }
+
+    body.menu-open & {
+        height: 62px;
+        background-color: white;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        @include media-breakpoint-up(md) {
+            height: 107px;
+            padding-top: 31px;
+            padding-bottom: 40px;
+        }
+        @include media-breakpoint-up(xxl) {
+            height: 112px;
+            padding-top: 28px;
+            padding-bottom: 45px;
+        }
+        @include media-breakpoint-up(xxxl) {
+            height: 120px;
+            padding-top: 26px;
+            padding-bottom: 60px;
+        }
+        .telephone {
+            svg {
+                .tel-path-a {
+                    fill: $black;
+                }
+                .tel-path-b {
+                    stroke: $black;
+                }
+                rect {
+                    fill: $black;
+                }
+            }
+        }
+        .logo {
+            height: 22px;
+            @include media-breakpoint-up(md) {
+                height: 36px;
+            }
+            @include media-breakpoint-up(xxl) {
+                height: 39px;
+            }
+            @include media-breakpoint-up(xxxl) {
+                height: 57px;
+            }
+            path {
+                fill: $black;
+            }
+        }
+        .menu-toggle {
+            color: $black;
+        }        
+    }
+}

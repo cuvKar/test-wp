@@ -1,0 +1,98 @@
+.footer {
+    padding: 2.5rem 0;
+    
+    a {
+        text-decoration: none;
+    }
+    &-logo {
+		.logo {
+			height: 22px;
+			@include media-breakpoint-up(md) {
+				height: 24px;
+			}
+			@include media-breakpoint-up(xxxl) {
+				height: 36px;
+			}
+		}
+    }
+    &-links {
+        a {
+            color: $black;
+            margin: 0 0.875rem;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            @include media-breakpoint-up(md) {
+                margin: 0 1.25rem;
+            }
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }    
+    &-socials {
+        a {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            margin: 0 0.875rem;
+            border-radius: 100%;
+            border: 1px solid $black;
+            display: inline-block;
+            transition: all ease 0.25s;
+            @include media-breakpoint-up(md) {
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                margin: 0 1.25rem;
+            }
+            .fab {
+                font-size: 13px;
+                color: $black;
+                transition: all ease 0.25s;
+                @include media-breakpoint-up(md) {
+                    font-size: 20px;
+                }
+            }
+            &:hover {
+                background-color: $black;
+                .fab {
+                    color: $white;
+                }
+            }
+        }
+    }
+    &-copyright {
+        font-size: $font-size-sm;
+        a {
+            color: var(--bs-secondary-color);
+            font-weight: 600;
+            text-decoration: underline;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+
+/* ------------------------------------------------------------
+    52: Back Top
+------------------------------------------------------------ */
+
+#back-top { 
+    position: fixed; 
+    z-index: 11;
+    bottom: 40px;
+    right: 40px;
+    opacity: 0;
+    visibility: hidden;
+    text-align: center;
+    padding-left: 25px;
+    transition: all 0.25s ease;
+    background-color: $black;
+    &.show {
+        visibility: visible;
+        opacity: 1;
+    }
+}
