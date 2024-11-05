@@ -1,0 +1,24 @@
+name: WordPress Theme Build and Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP environment
+        uses: php/php7.4-compat@v1.0.0
+        with:
+          version: '7.4'
+
+      - name: Install Composer dependencies
+        run: composer install --no-dev --prefer-dist
+
+      - name: Run unit tests (if applicable)
+        run: ./vendor/bin/phpunit
